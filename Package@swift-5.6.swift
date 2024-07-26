@@ -13,12 +13,7 @@ let package = Package(
         .target(name: "SwiftFormat", path: "Sources"),
         .testTarget(name: "SwiftFormatTests", dependencies: ["SwiftFormat"], path: "Tests"),
         .plugin(name: "SwiftFormatPlugin",
-                capability: .command(
-                    intent: .custom(verb: "swiftformat", description: "Formats Swift source files using SwiftFormat"),
-                    permissions: [
-                        .writeToPackageDirectory(reason: "This command reformats source files"),
-                    ]
-                ),
+                capability: .buildTool(),
                 dependencies: [.target(name: "CommandLineTool")]),
     ]
 )
